@@ -1,0 +1,11 @@
+.Navigation {
+  display: flex;
+  margin: 10px 0;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  button {
+    margin: 10px;
+  }
+}

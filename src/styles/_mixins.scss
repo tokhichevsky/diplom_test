@@ -1,0 +1,72 @@
+@mixin reset-button-styles() {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+}
+
+@mixin button-default {
+  cursor: pointer;
+  background: $primary;
+  color: white;
+  min-height: 3rem;
+  font-size: 1.3rem;
+  vertical-align: center;
+  font-weight: bold;
+  @include transition(background-color);
+
+  &:hover {
+    background: darken($primary, 10%);
+  }
+
+  &:focus {
+    outline: 0
+  }
+
+  &:disabled {
+    cursor: default;
+    background-color: lighten($primary, 40%) !important;
+  }
+}
+
+@mixin field-default {
+  padding: 10px 15px;
+  border: 2px solid $secondary;
+  border-radius: $border-radius;
+  outline: none;
+  flex-grow: 1;
+  background-color: white;
+  font-size: 1rem;
+  @include transition(box-shadow, border);
+
+  &:active, &:focus {
+    box-shadow: 0 0 5px lighten($primary, 30%);
+  }
+
+  &_filled {
+    border: 2px solid $primary;
+  }
+}
+
+@mixin text-wrapper {
+  border-radius: $border-radius;
+  border: 1px solid $primary;
+  background-color: lighten($primary, 60%);
+  padding: 1rem;
+}
+
+@mixin text-wrapper-gray {
+  @include text-wrapper;
+  border: 1px solid $secondary;
+  background-color: lighten($secondary, 60%);
+}
+
+@mixin transition($elements...) {
+  $transition: null;
+  @each $element in $elements {
+    $transition: $transition, $element $transition-time $transition-function;
+  }
+
+  transition: $transition;
+}

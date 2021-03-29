@@ -1,0 +1,27 @@
+@import "src/styles/index";
+
+.PollQuestion {
+  display: flex;
+  align-items: center;
+
+  .PollQuestion__text {
+    @include text-wrapper;
+    flex-grow: 1;
+    color: $primary;
+    font-weight: bold;
+  }
+
+  .PollQuestion__answer {
+    margin-left: 0.8rem;
+    @include text-wrapper-gray;
+    display: flex;
+    justify-content: space-around;
+    min-width: 150px;
+    @include transition(border, background-color)
+  }
+
+  .PollQuestion__answer_chosen {
+    border: 1px solid $primary;
+    background-color: lighten($primary, 60%);
+  }
+}

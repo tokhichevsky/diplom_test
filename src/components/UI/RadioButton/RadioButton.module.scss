@@ -1,0 +1,36 @@
+@import "src/styles/index";
+
+@mixin radio-element {
+  content: "";
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  box-shadow: 0 0 0 1px $primary;
+  box-sizing: border-box;
+  margin-right: 4px;
+  @include transition(border, background-color);
+}
+
+.RadioButton__input {
+  display: none;
+
+  &+ .RadioButton__label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 5px;
+    flex-shrink: 0 ;
+    &::before {
+      @include radio-element;
+    }
+  }
+
+  &:checked + .RadioButton__label {
+    &::before {
+      background-color: $primary !important;
+      border: 2px solid white;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+@import "src/styles";
+
+.Instruction {
+  @include text-wrapper;
+}

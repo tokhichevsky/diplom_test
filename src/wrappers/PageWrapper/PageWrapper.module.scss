@@ -1,0 +1,20 @@
+.PageWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .Page {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    height: 100%;
+    flex-grow: 1;
+    flex-shrink: 0;
+    padding: 25px;
+    box-sizing: border-box;
+  }
+
+  .PageWrapper__footer {
+    bottom: 0;
+  }
+}

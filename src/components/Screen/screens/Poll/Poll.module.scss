@@ -1,0 +1,5 @@
+.Poll {
+  .Poll__question:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+}

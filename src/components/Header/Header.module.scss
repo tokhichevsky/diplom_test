@@ -1,0 +1,31 @@
+@import "src/styles/index";
+
+$logo-size: 5.625rem;
+
+.Header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+
+  .Header__logo {
+    width: $logo-size;
+    height: $logo-size;
+  }
+
+  .Header__logoDescription {
+    padding-left: 10px;
+    border-left: 2px solid $primary;
+    color: $title-color;
+    font-size: 1.1rem;
+    width: 200px;
+    height: 75px;
+  }
+
+  .Header__title {
+    color: $primary;
+    margin-left: 3rem;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+  }
+}

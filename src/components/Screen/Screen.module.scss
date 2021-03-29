@@ -1,0 +1,18 @@
+.Screen {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 1000px;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+
+  .Screen__navigation {
+    display: flex;
+
+    .Screen__understandButton {
+      margin-left: auto;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+@import "src/styles/index";
+
+.Button {
+  @include reset-button-styles;
+  @include button-default;
+  padding: 5px 15px;
+  min-width: 100px;
+  border-radius: $border-radius;
+}

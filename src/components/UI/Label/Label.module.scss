@@ -1,0 +1,17 @@
+@import "src/styles";
+
+.Label {
+  color: $primary;
+  font-size: 1.1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  input, select {
+    margin-left: 10px;
+  }
+}
