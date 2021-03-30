@@ -45,7 +45,7 @@ export const ScreenMap: {
     },
     [ScreenTypes.SignUp]: {
       ScreenComponent: SignUp,
-      title: "Анкета"
+      title: "Расскажите немного о себе"
     },
     [ScreenTypes.ChooseTest]: {
       ScreenComponent: ChooseTest,

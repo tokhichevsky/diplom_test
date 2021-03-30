@@ -20,7 +20,7 @@ const Poll = () => {
     }));
   }, []);
 
-  const completed = Object.values(pollState).reduce((completed, value) => completed && typeof value === "boolean", true)
+  const completed = Object.values(pollState).length === questions.length
 
   const buttonEndClickHandler = () => {
     dispatch(setPoll(pollState))

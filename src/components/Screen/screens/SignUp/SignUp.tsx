@@ -85,7 +85,7 @@ const SignUp = () => {
         />
       </Label>
       <Label>
-        Инструмент
+        Специальность
         <Input type="text" name="music_instrument" value={form.music_instrument} onChange={fieldChangeHandler}/>
       </Label>
       <h2>Другое</h2>

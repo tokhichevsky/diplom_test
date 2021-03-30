@@ -8,7 +8,7 @@ import {ScreenTypes} from "../../../../models/Screen.model";
 const TestTrainingInfo = () => {
   const dispatch = useDispatch();
   const buttonClickHandler = () => {
-    dispatch(setScreenByType(ScreenTypes.TestTraining));
+    dispatch(setScreenByType(ScreenTypes.TestTrainingCreate));
   }
   return (
     <>

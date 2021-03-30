@@ -27,7 +27,7 @@ const ChooseTest = () => {
       </Navigation>
       <Navigation>
         <div />
-        <Button onClick={buttonEndClickHandler}>Понятно</Button>
+        <Button onClick={buttonEndClickHandler}>Завершить эксперимент</Button>
       </Navigation>
     </>
   )
