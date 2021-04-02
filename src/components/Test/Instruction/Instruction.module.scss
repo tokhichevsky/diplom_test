@@ -2,4 +2,5 @@
 
 .Instruction {
   @include text-wrapper;
+  @include transition(width, height);
 }

@@ -8,4 +8,17 @@ $border-radius: 1rem;
 
 $transition-time: 200ms;
 $transition-function: ease-in-out;
-
+$presentation-gradient: linear-gradient(
+                to right,
+                $primary 30%,
+                $secondary 30%,
+                $secondary 35%,
+                $gray 35%,
+                $gray 50%,
+                $secondary 50%,
+                $secondary 65%,
+                $primary 65%,
+                $primary 75%,
+                $secondary 75%,
+                $secondary 100%
+);

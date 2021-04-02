@@ -11,6 +11,10 @@ import TestInfo1 from "./screens/TestInfo1/TestInfo1";
 import TestInfo2 from "./screens/TestInfo2/TestInfo2";
 import TestExample from "./screens/TestExample/TestExample";
 import TestTrainingInfo from "./screens/TestTrainingInfo/TestTrainingInfo";
+import TestTrainingTableInstruction from "./screens/TestTrainingTableInstruction/TestTrainingTableInstruction";
+import Tests from "./screens/Tests/Tests";
+import Finish from "./screens/Finish/Finish";
+import DebugTables from "./screens/DebugTables/DebugTables";
 
 type ScreenMapElement = {
   ScreenComponent: React.JSXElementConstructor<any>;
@@ -53,25 +57,53 @@ export const ScreenMap: {
     },
     [ScreenTypes.TestInfo1]: {
       ScreenComponent: TestInfo1,
-      title: null
+      title: "Об эксперименте"
     },
     [ScreenTypes.TestInfo2]: {
       ScreenComponent: TestInfo2,
-      title: null
+      title: "Об эксперименте"
     },
     [ScreenTypes.TestExample]: {
       ScreenComponent: TestExample,
-      title: null
+      title: "Потренируемся?"
     },
     [ScreenTypes.TestTrainingInfo]: {
       ScreenComponent: TestTrainingInfo,
-      title: null
+      title: "Потренируемся?"
+    },
+    [ScreenTypes.TestTrainingTableInstruction]: {
+      ScreenComponent: TestTrainingTableInstruction,
+      title: "Потренируемся?"
+    },
+    [ScreenTypes.TestTraining]: {
+      ScreenComponent: Tests.Training,
+      title: "Тренировка"
+    },
+    [ScreenTypes.TestStage1]: {
+      ScreenComponent: Tests.Stage1,
+      title: "Этап 1"
+    },
+    [ScreenTypes.TestStage2]: {
+      ScreenComponent: Tests.Stage2,
+      title: "Этап 2"
+    },
+    [ScreenTypes.TestStage3]: {
+      ScreenComponent: Tests.Stage3,
+      title: "Этап 3"
+    },
+    [ScreenTypes.Finish]: {
+      ScreenComponent: Finish,
+      title: "Этап 3"
+    },
+    [ScreenTypes.DebugTables]: {
+      ScreenComponent: DebugTables,
+      title: "Debug Tables"
     }
   },
 
   get(screenType: ScreenTypes, withoutComponent = true) {
     const {ScreenComponent, ...params} = this._screens[screenType];
-    console.log(params)
+    console.log(params);
     return {
       token: screenType,
       ...params,

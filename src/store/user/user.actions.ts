@@ -13,3 +13,24 @@ export const setPoll = (poll: { [name: string]: boolean }) => {
     payload: poll,
   };
 };
+
+export const setTest = (stage: string | number, test: { [name: string]: {} }) => {
+  return {
+    type: UserAction.SET_TEST,
+    payload: {[`stage_${stage}`]: test},
+  };
+};
+
+export const setUserId = (id: number) => {
+  return {
+    type: UserAction.SET_USER_ID,
+    payload: id
+  }
+}
+
+export const setTableIndexes = (tableIndex: number, taskIndex: number = 0) => {
+  return {
+    type: UserAction.SET_TABLE_INDEX,
+    payload: {tableIndex, taskIndex}
+  };
+};

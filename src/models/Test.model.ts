@@ -1,19 +1,32 @@
-import {Metronom} from "./Metronom";
-
 const beepSound = require("../assets/beep.mp3");
-const clickSound = require("../assets/click.wav");
 
-export const Sounds = {
-  Beep: beepSound.default,
-  Click: clickSound.default
-};
-
-export function playSound(src: string) {
+export function playSound() {
   const audio = new Audio();
-  audio.src = clickSound.default;
+  audio.src = beepSound.default;
   audio.autoplay = true;
 }
 
-const isEven = Math.round(Math.random()) === 1;
+export enum TaskTypes {
+  Create = "Create",
+  Estimate = "Estimate"
+}
 
-export const metronom = new Metronom(isEven ? 140 : 35);
+export interface TestResult {
+  tablesScore: TablesScore
+  time: number
+}
+
+export interface StageResult {
+  [interval: number]: {
+    [TaskTypes.Create]: TestResult,
+    [TaskTypes.Estimate]: TestResult
+  }
+}
+
+export interface TablesScore {
+  correct: number,
+  wrong: number
+}
+
+export const intervals = [26, 38, 64, 101, 156, 179];
+

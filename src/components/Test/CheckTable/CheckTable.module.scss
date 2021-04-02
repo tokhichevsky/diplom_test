@@ -1,0 +1,13 @@
+.CheckTable {
+  .CheckTable__task {
+    margin-bottom: 1rem;
+  }
+  .CheckTable__tableContainer {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.CheckTable_disabled {
+  filter: blur(100px);
+}

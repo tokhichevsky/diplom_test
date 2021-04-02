@@ -1,21 +1,23 @@
-import {metronom, tables} from "../../models/Test.model";
 import {TestCreateProps} from "./TestCreate.model";
-import CheckTable from "./CheckTable/CheckTable";
+import CheckTable from "../CheckTable/CheckTable";
 import {useDispatch, useSelector} from "react-redux";
-import {setTableIndex} from "../../store/user/user.actions";
-import {selectTableIndex} from "../../store/user/user.selectors";
-import CreateIntervalTask from "./CreateIntervalTask/CreateIntervalTask";
+import {setTableIndexes} from "../../../store/user/user.actions";
+import {selectTableIndexes} from "../../../store/user/user.selectors";
+import CreateIntervalTask from "../CreateIntervalTask/CreateIntervalTask";
 import {useState} from "react";
+import useMetronom from "../../../models/Metronom.hook";
+import tables from "../../../models/tables";
 
 const TestCreate = (props: TestCreateProps) => {
   const [isStarted, setIsStarted] = useState(false);
   const [isEnded, setIsEnded] = useState(false);
   const [tablesScore, setTablesScore] = useState({correct: 0, wrong: 0})
   const dispatch = useDispatch();
-  const currentTableIndex = useSelector(selectTableIndex);
+  const metronom = useMetronom(props.metronom);
+  const {tableIndex: currentTableIndex, taskIndex: currentTaskIndex} = useSelector(selectTableIndexes);
 
-  const cellClickHandler = (isValid, tableIndex) => {
-    dispatch(setTableIndex(tableIndex));
+  const cellClickHandler = (isValid, tableIndex, taskIndex) => {
+    dispatch(setTableIndexes(tableIndex, taskIndex));
     const scoreName = isValid ? "correct" : "wrong";
     setTablesScore(prevState => ({
       ...prevState,
@@ -24,7 +26,7 @@ const TestCreate = (props: TestCreateProps) => {
   };
 
   const completeTaskHandler = (time) => {
-    props.useMetronom && metronom.stop();
+    metronom.stop();
     const data = {
       tablesScore,
       time
@@ -35,14 +37,20 @@ const TestCreate = (props: TestCreateProps) => {
 
   const startTaskHandler = () => {
     setIsStarted(true);
-    props.useMetronom && metronom.start()
+    metronom.start()
   };
 
   return (
     <div>
-      <CreateIntervalTask time={10} onStart={startTaskHandler} onComplete={completeTaskHandler}/>
+      <CreateIntervalTask time={props.interval} onStart={startTaskHandler} onComplete={completeTaskHandler}/>
       {isStarted &&
-      <CheckTable data={tables} onCellClick={cellClickHandler} startTableIndex={currentTableIndex} disabled={isEnded}/>
+      <CheckTable
+        data={tables}
+        onCellClick={cellClickHandler}
+        startTableIndex={currentTableIndex}
+        startTaskIndex={currentTaskIndex}
+        disabled={isEnded}
+      />
       }
     </div>
   );

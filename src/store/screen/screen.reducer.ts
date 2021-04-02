@@ -2,9 +2,11 @@ import {ScreenTypes} from "models/Screen.model";
 import {ScreenAction, ScreenState} from "./screen.store";
 import {ScreenMap} from "../../components/Screen/ScreenMap";
 
+const debugPage = new URLSearchParams(window.location.search).get("debug")
+console.log(debugPage, ScreenTypes[debugPage])
 export const initialState: ScreenState = {
   screen: [
-    ScreenMap.get(ScreenTypes.Start)
+    ScreenMap.get((debugPage && ScreenTypes[debugPage]) || ScreenTypes.Start)
   ],
 };
 

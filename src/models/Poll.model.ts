@@ -2,14 +2,14 @@ export enum PerceptionChannelTypes {
   Audio = "audio",
   Visual = "visual",
   Kinesthetic = "kinesthetic",
-  Digidal = "digidal"
+  Digital = "digital"
 }
 
 export const NameByPerceptionChannelType = {
   [PerceptionChannelTypes.Audio]: "Аудиал",
   [PerceptionChannelTypes.Visual]: "Визуал",
   [PerceptionChannelTypes.Kinesthetic]: "Кинестетик",
-  [PerceptionChannelTypes.Digidal]: "Дигидал",
+  [PerceptionChannelTypes.Digital]: "Дигитал",
 }
 
 export interface Question {

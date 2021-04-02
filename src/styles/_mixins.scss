@@ -70,3 +70,8 @@
 
   transition: $transition;
 }
+
+@mixin stripe {
+  background: $presentation-gradient;
+  height: 1.5rem;
+}

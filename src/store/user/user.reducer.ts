@@ -2,7 +2,12 @@ import {UserAction, UserState} from "./user.store";
 
 export const initialState: UserState = {
   info: {},
-  poll: {}
+  poll: {},
+  test: {},
+  table: {
+    tableIndex: 0,
+    taskIndex: 0
+  }
 };
 
 export function userReducer(state: UserState = initialState, action): UserState {
@@ -18,6 +23,30 @@ export function userReducer(state: UserState = initialState, action): UserState 
       return {
         ...state,
         info: action.payload,
+      };
+    }
+
+    case UserAction.SET_TEST: {
+      return {
+        ...state,
+        test: {
+          ...state.test,
+          ...action.payload
+        },
+      };
+    }
+
+    case UserAction.SET_TABLE_INDEX: {
+      return {
+        ...state,
+        table: action.payload,
+      };
+    }
+
+    case UserAction.SET_USER_ID: {
+      return {
+        ...state,
+        id: action.payload,
       };
     }
 

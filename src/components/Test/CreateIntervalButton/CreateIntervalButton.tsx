@@ -1,10 +1,9 @@
 import RoundButton from "../../UI/RoundButton/RoundButton";
 import {useCallback, useState} from "react";
-import {IntervalButtonProps} from "./IntervalButton.model";
+import {CreateIntervalButtonProps} from "./CreateIntervalButton.model";
 import {playSound} from "../../../models/Test.model";
 
-const IntervalButton = (props: IntervalButtonProps) => {
-  // const [isStarted, showIsStarted] = useState(false);
+const CreateIntervalButton = (props: CreateIntervalButtonProps) => {
   const [intervalBounds, setIntervalBounds] = useState({start: null, end: null});
   const buttonClickHandler = useCallback(() => {
     const currentTime = Date.now();
@@ -32,4 +31,4 @@ const IntervalButton = (props: IntervalButtonProps) => {
   );
 };
 
-export default IntervalButton;
+export default CreateIntervalButton;

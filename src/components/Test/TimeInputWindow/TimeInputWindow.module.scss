@@ -3,6 +3,7 @@
 .TimeInputWindow {
   @include text-wrapper-gray;
   width: max-content;
+  @include transition(background-color, border-color);
 
   .TimeInputWindow__input {
     margin-right: 10px;
@@ -13,4 +14,8 @@
     width: max-content;
     margin-left: auto;
   }
+}
+
+.TimeInputWindow_filled {
+  @include text-wrapper;
 }

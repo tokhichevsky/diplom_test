@@ -1,19 +1,11 @@
 import React from "react";
 import CenterText from "../../../UI/CenterText/CenterText";
 import Navigation from "../../../UI/Navigation/Navigation";
-import Button from "../../../UI/Button/Button";
-import {setScreenByType} from "../../../../store/screen/screen.actions";
 import {ScreenTypes} from "../../../../models/Screen.model";
-import {useDispatch} from "react-redux";
+import GoButton from "../../../GoButton/GoButton";
 
 
 const Start = () => {
-  const dispatch = useDispatch();
-
-  const onButtonClick = () => {
-    dispatch(setScreenByType(ScreenTypes.SignUp));
-  };
-
   return (
     <>
       <CenterText>
@@ -30,7 +22,7 @@ const Start = () => {
       </CenterText>
       <Navigation>
         <div/>
-        <Button onClick={onButtonClick}>Понятно</Button>
+        <GoButton to={ScreenTypes.SignUp}>Понятно</GoButton>
       </Navigation>
     </>
   );

@@ -1,6 +1,5 @@
 import Input from "../../../UI/Input/Input";
 import Navigation from "../../../UI/Navigation/Navigation";
-import Button from "../../../UI/Button/Button";
 import CSS from "./SignUp.module.scss";
 import Label from "../../../UI/Label/Label";
 import Select from "../../../UI/Select/Select";
@@ -12,9 +11,10 @@ import {
 } from "./SignUp.model";
 import {ChangeEvent, useState} from "react";
 import {useDispatch} from "react-redux";
-import {setInfo} from "../../../../store/user/user.actions";
-import {setScreenByType} from "../../../../store/screen/screen.actions";
+import {setInfo, setUserId} from "../../../../store/user/user.actions";
 import {ScreenTypes} from "../../../../models/Screen.model";
+import GoButton from "../../../GoButton/GoButton";
+import {registerRequest} from "../../../../api";
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -41,11 +41,17 @@ const SignUp = () => {
   };
 
   const buttonContinueClickHandler = () => {
-    dispatch(setInfo(form));
-    dispatch(setScreenByType(ScreenTypes.PollInfo));
+    registerRequest(form).then((response) => {
+      dispatch(setInfo(form))
+      dispatch(setUserId(response.data.id))
+      console.log(response.data.id)
+    })
   };
 
-  const completed = Object.values(form).reduce((completed, value) => completed && !!value, true);
+  const completed = Object.entries(form).reduce((completed, [name,value]) => {
+    if (name === "music_instrument" && form["music_education_years"] === "0") return completed;
+    return completed && !!value
+  }, true);
   return (
     <div className={CSS.SignUp}>
       <h2>О вас</h2>
@@ -118,12 +124,13 @@ const SignUp = () => {
       </Label>
       <Navigation>
         <div />
-        <Button
+        <GoButton
           disabled={!completed}
           onClick={buttonContinueClickHandler}
+          to={ScreenTypes.PollInfo}
         >
           Продолжить
-        </Button>
+        </GoButton>
       </Navigation>
     </div>
   );

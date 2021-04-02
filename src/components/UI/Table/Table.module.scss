@@ -1,0 +1,36 @@
+@import "src/styles";
+
+.Table {
+  border-radius: $border-radius;
+  border-collapse: collapse;
+  text-align: center;
+  overflow: hidden;
+  max-width: max-content;
+  //box-shadow: 0 0 0 10px $primary, 0 0 0 -2px $primary;
+
+  th, td:first-child {
+    //background: lighten($primary, 50%);
+    background-color: $primary !important;
+    color: white;
+    padding: 10px 20px;
+  }
+
+  th, td {
+    background-color: lighten($primary, 50%);
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: white;
+  }
+
+  th:first-child, td:first-child {
+    text-align: left;
+  }
+}
+
+.Table_hoverable {
+  td:hover {
+    background-color: lighten($primary, 60%);
+    cursor: pointer;
+    @include transition(background-color);
+  }
+}

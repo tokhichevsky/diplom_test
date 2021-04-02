@@ -1,21 +1,13 @@
 import Instruction from "../../../Test/Instruction/Instruction";
-import IntervalButton from "../../../Test/IntervalButton/IntervalButton";
+import CreateIntervalButton from "../../../Test/CreateIntervalButton/CreateIntervalButton";
 import CenterText from "../../../UI/CenterText/CenterText";
 import SignalButton from "../../../Test/SignalButton/SignalButton";
 import TimeInputWindow from "../../../Test/TimeInputWindow/TimeInputWindow";
 import Navigation from "../../../UI/Navigation/Navigation";
-import Button from "../../../UI/Button/Button";
-import {useDispatch} from "react-redux";
-import {setScreenByType} from "../../../../store/screen/screen.actions";
 import {ScreenTypes} from "../../../../models/Screen.model";
+import GoButton from "../../../GoButton/GoButton";
 
 const TestExample = () => {
-  const dispatch = useDispatch();
-
-  const buttonClickHandler = () => {
-    dispatch(setScreenByType(ScreenTypes.TestTrainingInfo))
-  }
-
   return (
     <>
       <h2>Создание интервалов</h2>
@@ -25,7 +17,7 @@ const TestExample = () => {
       </Instruction>
       <p>Чтобы начать и закончить временной промежуток, нажмите на кнопку в правом верхнем углу экрана. Она будет
         выглядеть так: </p>
-      <CenterText><IntervalButton/></CenterText>
+      <CenterText><CreateIntervalButton/></CenterText>
       <h2>Оценка интервала</h2>
       <p>В этой части мы просим вас оценить интервал, ограниченный двумя звуковыми сигналами.</p>
       <p>Нажмите на кнопку <b>Сигнал</b>, чтобы прослушать его сейчас. </p>
@@ -39,7 +31,7 @@ const TestExample = () => {
       </CenterText>
       <Navigation>
         <div />
-        <Button onClick={buttonClickHandler}>Понятно</Button>
+        <GoButton to={ScreenTypes.TestTrainingInfo}>Понятно</GoButton>
       </Navigation>
     </>
   );

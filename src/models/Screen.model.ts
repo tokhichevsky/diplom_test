@@ -11,14 +11,12 @@ export enum ScreenTypes {
   TestInfo2 = "TestInfo2",
   TestExample = "TestExample",
   TestTrainingInfo = "TestTrainingInfo",
-  TestTrainingCreate = "TestTraining/Create",
-  TestTrainingEstimate = "TestTraining/Estimate",
-  TestStage1Create = "TestStage1/Create",
-  TestStage1Estimate = "TestStage1/Estimate",
-  TestStage2Create = "TestStage2/Create",
-  TestStage2Estimate = "TestStage2/Estimate",
-  TestStage3Create = "TestStage3/Create",
-  TestStage3Estimate = "TestStage3/Estimate",
+  TestTrainingTableInstruction = "TestTrainingTableInstruction",
+  TestTraining = "TestTraining",
+  TestStage1 = "TestStage1",
+  TestStage2 = "TestStage2",
+  TestStage3 = "TestStage3",
+  DebugTables = "DebugTables",
 }
 
 export interface ScreenElement {

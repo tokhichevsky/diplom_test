@@ -13,7 +13,7 @@ const RoundButton = (props: RoundButtonProps) => {
     >
       {props.children}
     </button>
-  )
-}
+  );
+};
 
 export default RoundButton;

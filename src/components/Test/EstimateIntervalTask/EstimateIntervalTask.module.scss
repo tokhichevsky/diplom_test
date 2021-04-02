@@ -1,0 +1,19 @@
+.EstimateIntervalTask {
+  margin-bottom: 2rem;
+
+  .EstimateIntervalTask__instruction {
+    width: max-content;
+    margin: auto auto 1rem;
+  }
+
+  .EstimateIntervalTask__inputWindow {
+    width: max-content;
+    margin: auto;
+  }
+
+  .EstimateIntervalTask__intervalButton {
+    position: absolute;
+    top: 2.4rem;
+    right: 10px;
+  }
+}

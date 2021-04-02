@@ -1,13 +1,12 @@
 import PollQuestion from "./PollQuestion/PollQuestion";
 import {useCallback, useState} from "react";
 import CSS from "./Poll.module.scss";
-import Button from "../../../UI/Button/Button";
 import Navigation from "../../../UI/Navigation/Navigation";
 import {useDispatch} from "react-redux";
 import {setPoll} from "../../../../store/user/user.actions";
-import {setScreenByType} from "../../../../store/screen/screen.actions";
 import {ScreenTypes} from "../../../../models/Screen.model";
 import {questions} from "../../../../models/Poll.model";
+import GoButton from "../../../GoButton/GoButton";
 
 const Poll = () => {
   const [pollState, setPollState] = useState({});
@@ -24,7 +23,6 @@ const Poll = () => {
 
   const buttonEndClickHandler = () => {
     dispatch(setPoll(pollState))
-    dispatch(setScreenByType(ScreenTypes.PollFinish));
   }
 
   // const buttonTestClickHandler = () => {
@@ -49,12 +47,13 @@ const Poll = () => {
       })}
       <Navigation>
         <div />
-        <Button
+        <GoButton
           disabled={!completed}
           onClick={buttonEndClickHandler}
+          to={ScreenTypes.PollFinish}
         >
           Закончить
-        </Button>
+        </GoButton>
       </Navigation>
     </div>
   );

@@ -1,17 +1,10 @@
 import CenterText from "../../../UI/CenterText/CenterText";
 import Navigation from "../../../UI/Navigation/Navigation";
-import Button from "../../../UI/Button/Button";
 import React from "react";
-import {useDispatch} from "react-redux";
-import {setScreenByType} from "../../../../store/screen/screen.actions";
 import {ScreenTypes} from "../../../../models/Screen.model";
+import GoButton from "../../../GoButton/GoButton";
 
 const PollInfo = () => {
-  const dispatch = useDispatch();
-
-  const onButtonClick = () => {
-    dispatch(setScreenByType(ScreenTypes.ChooseTest));
-  };
   return (
     <>
       <CenterText>
@@ -24,7 +17,7 @@ const PollInfo = () => {
       </CenterText>
       <Navigation>
         <div/>
-        <Button onClick={onButtonClick}>Понятно</Button>
+        <GoButton to={ScreenTypes.ChooseTest}>Понятно</GoButton>
       </Navigation>
     </>
   );

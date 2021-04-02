@@ -1,9 +1,9 @@
 import Button from "../../UI/Button/Button";
-import {metronom} from "../../../models/Test.model";
+import {playSound} from "../../../models/Test.model";
 
 const SignalButton = () => {
   const buttonClickHandler = () => {
-    metronom.playClickSound();
+    playSound();
   }
   return (
     <Button onClick={buttonClickHandler}>♫ Сигнал</Button>

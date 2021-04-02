@@ -12,4 +12,9 @@ const appReducer = combineReducers({
   [USER_STORE_KEY]: userReducer
 })
 
-export const store = createStore(appReducer);
+
+const devTools = process.env.NODE_ENV === "development"
+  // @ts-ignore
+  ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  : undefined;
+export const store = createStore(appReducer, devTools);

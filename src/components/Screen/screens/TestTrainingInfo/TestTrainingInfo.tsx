@@ -1,15 +1,9 @@
 import CenterText from "../../../UI/CenterText/CenterText";
 import Navigation from "../../../UI/Navigation/Navigation";
-import Button from "../../../UI/Button/Button";
-import {useDispatch} from "react-redux";
-import {setScreenByType} from "../../../../store/screen/screen.actions";
 import {ScreenTypes} from "../../../../models/Screen.model";
+import GoButton from "../../../GoButton/GoButton";
 
 const TestTrainingInfo = () => {
-  const dispatch = useDispatch();
-  const buttonClickHandler = () => {
-    dispatch(setScreenByType(ScreenTypes.TestTrainingCreate));
-  }
   return (
     <>
       <CenterText>
@@ -22,7 +16,7 @@ const TestTrainingInfo = () => {
       </CenterText>
       <Navigation>
         <div />
-        <Button onClick={buttonClickHandler}>Попробовать</Button>
+        <GoButton to={ScreenTypes.TestTrainingTableInstruction}>Попробовать</GoButton>
       </Navigation>
     </>
   );
