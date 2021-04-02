@@ -1,32 +1,35 @@
 import RoundButton from "../../UI/RoundButton/RoundButton";
-import {useState} from "react";
-import {IntervalButtonProps, playBeepSound} from "./IntervalButton.model";
+import {useCallback, useState} from "react";
+import {IntervalButtonProps} from "./IntervalButton.model";
+import {playSound} from "../../../models/Test.model";
 
 const IntervalButton = (props: IntervalButtonProps) => {
   // const [isStarted, showIsStarted] = useState(false);
   const [intervalBounds, setIntervalBounds] = useState({start: null, end: null});
-  const buttonClickHandler = () => {
+  const buttonClickHandler = useCallback(() => {
+    const currentTime = Date.now();
+    playSound();
     setIntervalBounds(prevState => {
-      playBeepSound()
       const newState = {...prevState};
-      if (newState.start === null) newState.start = Date.now();
+      if (newState.start === null) newState.start = currentTime;
       else if (newState.end === null) {
-        newState.end = Date.now();
-        props.onChange && props.onChange(Object.values(newState) as [number, number])
+        newState.end = currentTime;
+        props.onComplete && props.onComplete(Object.values(newState) as [number, number]);
       }
       return newState;
-    })
-
-  }
+    });
+    props.onClick && props.onClick();
+  }, [props]);
 
   return (
     <RoundButton
+      className={props.className}
       onClick={buttonClickHandler}
       disabled={intervalBounds.end !== null}
     >
       {!intervalBounds.start ? "Начать" : "Завершить"}
     </RoundButton>
-  )
-}
+  );
+};
 
 export default IntervalButton;
