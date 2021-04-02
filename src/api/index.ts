@@ -11,6 +11,6 @@ export function postExperimentRequest(data: object) {
   return instance.post("/user/experiment/", data)
 }
 export function serverLogRequest(data: string) {
-  console.log(data);
-  return instance.post("/log/", data)
+  console.log(data.toString());
+  return instance.post("/log/", {text: data.toString()})
 }
