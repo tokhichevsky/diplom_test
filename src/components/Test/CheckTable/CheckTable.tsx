@@ -57,13 +57,13 @@ const CheckTable = (props: CheckTableProps) => {
     return data;
   }, [correctColumnIndex, correctRowIndex, currentTableIndex, props.data, props.showCorrectAnswer]);
 
-
   if (!isTablesEndedRef.current) {
     return (
       <div className={classnames(CSS.CheckTable)}>
         <Instruction
           key={`table_task_${currentTableIndex}`}
           className={CSS.CheckTable__task}
+          highlight={[...props.data[currentTableIndex].columnNames, ...props.data[currentTableIndex].rowNames]}
         >
           {props.data[currentTableIndex].tasks[currentTaskIndex].text}
         </Instruction>

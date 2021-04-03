@@ -5,10 +5,6 @@ const DebugTables = () => {
   return (
     <CheckTable
       data={tables}
-      // onCellClick={cellClickHandler}
-      // startTableIndex={currentTableIndex}
-      // startTaskIndex={currentTaskIndex}
-      // disabled={isEnded}
     />
   );
 };
