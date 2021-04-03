@@ -13,7 +13,6 @@ const PollFinish = () => {
   const poll = useSelector(selectPoll);
   const results = calculatePerceptionChannel(poll);
   const perceptionChannel = getPerceptionChannel(results);
-  console.log(perceptionChannel, NameByPerceptionChannelType[perceptionChannel])
 
   return (
     <>

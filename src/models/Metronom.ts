@@ -43,13 +43,12 @@ export class Metronom {
   }
 
   playClickSoundAtTime(time) {
-    console.log(time)
     // Silence the click.
     this.tickVolume.gain.cancelScheduledValues(time);
     this.tickVolume.gain.setValueAtTime(0, time);
 
     // Audible click sound.
-    this.tickVolume.gain.linearRampToValueAtTime(1, time + .001);
+    this.tickVolume.gain.linearRampToValueAtTime(0.2, time + .001);
     this.tickVolume.gain.linearRampToValueAtTime(0, time + .001 + .01);
   }
 
@@ -86,7 +85,6 @@ export class Metronom {
   }
 
   startRandom() {
-    console.log(2)
     clearInterval(this.interval)
     this.status = Metronom.Status.Started;
     this.initAudio();
@@ -95,7 +93,6 @@ export class Metronom {
   }
 
   stop() {
-    console.log(3)
     this.status = Metronom.Status.Stopped;
     this.tickVolume.gain.value = 0;
     clearInterval(this.interval)

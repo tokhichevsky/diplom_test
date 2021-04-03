@@ -8,7 +8,7 @@ import CSS from "./Screen.module.scss";
 const Screen = () => {
   const currentScreenElement = useSelector(selectCurrentScreen)
   const CurrentScreen = ScreenMap.getComponent(currentScreenElement.token);
-  console.log(currentScreenElement.token)
+
   return (
     <div className={CSS.Screen}>
       <CurrentScreen />

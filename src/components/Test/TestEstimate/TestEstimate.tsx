@@ -24,7 +24,6 @@ const TestEstimate = (props: TestEstimateProps) => {
       [scoreName]: prevState[scoreName] + 1
     }))
   };
-
   const taskStartHandler = () => {
     setIsStarted(true);
     metronom.start()
@@ -37,6 +36,7 @@ const TestEstimate = (props: TestEstimateProps) => {
   }
 
   const listeningEndHandler = () => {
+    setIsEnded(true)
     metronom.stop()
   }
 

@@ -3,7 +3,6 @@ import {ScreenAction} from "./screen.store";
 import {ScreenMap} from "../../components/Screen/ScreenMap";
 
 export const setScreen = (nextScreen: ScreenElement) => {
-  console.log(nextScreen)
   return {
     type: ScreenAction.SET_SCREEN,
     payload: nextScreen,

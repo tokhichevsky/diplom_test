@@ -44,7 +44,6 @@ const SignUp = () => {
     registerRequest(form).then((response) => {
       dispatch(setInfo(form))
       dispatch(setUserId(response.data.id))
-      console.log(response.data.id)
     })
   };
 

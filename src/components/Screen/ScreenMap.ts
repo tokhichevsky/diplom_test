@@ -103,7 +103,7 @@ export const ScreenMap: {
 
   get(screenType: ScreenTypes, withoutComponent = true) {
     const {ScreenComponent, ...params} = this._screens[screenType];
-    console.log(params);
+
     return {
       token: screenType,
       ...params,

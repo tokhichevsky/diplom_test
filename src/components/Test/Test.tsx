@@ -37,7 +37,6 @@ const Test = (props: TestProps) => {
       setCurrentTaskType(prevState => prevState === TaskTypes.Estimate ? TaskTypes.Create : TaskTypes.Estimate);
       setIsTaskCompleted(false);
     } else {
-      console.log(results);
       dispatch(setTest(props.stage, results))
       dispatch(setScreenByType(props.nextScreen));
     }
