@@ -25,13 +25,6 @@ const Poll = () => {
     dispatch(setPoll(pollState))
   }
 
-  // const buttonTestClickHandler = () => {
-  //   dispatch(setPoll(pollState))
-  //   // dispatch(setScreenByType(ScreenTypes.Poll))
-  // }
-  //
-  // const isTestCompleted = selectTestIsCompleted;
-
   return (
     <div className={CSS.Poll}>
       {questions.map((question, index) => {

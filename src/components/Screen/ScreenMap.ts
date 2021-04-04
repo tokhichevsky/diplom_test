@@ -93,7 +93,7 @@ export const ScreenMap: {
     },
     [ScreenTypes.Finish]: {
       ScreenComponent: Finish,
-      title: "Этап 3"
+      title: "Финиш"
     },
     [ScreenTypes.DebugTables]: {
       ScreenComponent: DebugTables,

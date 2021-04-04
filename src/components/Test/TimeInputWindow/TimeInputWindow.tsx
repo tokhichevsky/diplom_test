@@ -27,7 +27,7 @@ const TimeInputWindow = (props: TimeInputWindowProps) => {
           value={time}
           className={CSS.TimeInputWindow__input}
           onChange={inputChangeHandler}
-
+          min="0"
         />
         секунд
       </div>

@@ -11,10 +11,9 @@ const Instruction = (props: InstructionProps) => {
         if (typeof child === "string") {
           let newChild = child;
           props.highlight.forEach((text) => {
-            // newChild = <span dangerouslySetInnerHTML={{__html: newChild.replaceAll(new RegExp(text, "gim"), "<b>$1</b>".toString()) }}/>;
             newChild = newChild.replaceAll(
-              new RegExp(text, "gim"),
-              `<b>${text[0].toUpperCase()}${text.slice(1)}</b>`
+              new RegExp(`([^А-Яа-яё])${text}([^А-Яа-яё])`, "gim"),
+              `$1<b>${text[0].toUpperCase()}${text.slice(1)}</b>$2`
             );
           });
           return <span dangerouslySetInnerHTML={{__html: newChild}}/>;
