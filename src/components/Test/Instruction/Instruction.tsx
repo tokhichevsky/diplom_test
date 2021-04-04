@@ -5,7 +5,6 @@ import React from "react";
 
 const Instruction = (props: InstructionProps) => {
   const highlight = (children: InstructionProps["children"]) => {
-    console.log(props);
     if (props.highlight) {
       return React.Children.map(children, (child) => {
         if (typeof child === "string") {

@@ -73,7 +73,7 @@ const Test = (props: TestProps) => {
             ? "Продолжить"
             : props.isTraining
               ? "Закончить тренировку и начать тест"
-              : `Закончить этап №${props.stage}]`}
+              : `Закончить этап №${props.stage}`}
         </Button>
       </Navigation>
     </>
