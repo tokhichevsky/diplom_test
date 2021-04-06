@@ -19,6 +19,7 @@ export enum ScreenTypes {
   TestStage2 = "TestStage2",
   TestStage3 = "TestStage3",
   DebugTables = "DebugTables",
+  CheckMetronom = "CheckMetronom"
 }
 
 export interface ScreenElement {

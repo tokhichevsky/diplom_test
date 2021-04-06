@@ -11,17 +11,22 @@ const TimeInputWindow = (props: TimeInputWindowProps) => {
 
   const inputChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setTime(event.target.value);
-  }
+  };
 
   const saveButtonClickHandler = () => {
-    props.onComplete && props.onComplete(Number(time))
+    props.onComplete && props.onComplete(Number(time));
     setIsAnswered(true);
-  }
+  };
 
   return (
     <div className={classnames(CSS.TimeInputWindow, {[CSS.TimeInputWindow_filled]: isAnswered}, props.className)}>
       <p><b>Сколько длился указанный промежуток времени?</b></p>
       <div className={CSS.TimeInputWindow__field}>
+        <span
+          className={classnames(CSS.TimeInputWindow__completedIcon, {[CSS.TimeInputWindow__completedIcon_show]: isAnswered})}
+        >
+          ✔
+        </span>
         <Input
           type="number"
           value={time}

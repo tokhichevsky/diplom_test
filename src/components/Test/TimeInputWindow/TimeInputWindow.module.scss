@@ -5,6 +5,17 @@
   width: max-content;
   @include transition(background-color, border-color);
 
+  .TimeInputWindow__completedIcon {
+    color: transparent;
+    margin-right: 10px;
+    @include unselectable;
+    @include transition(color);
+  }
+
+  .TimeInputWindow__completedIcon_show {
+    color: green;
+  }
+
   .TimeInputWindow__input {
     margin-right: 10px;
     width: 100px;

@@ -39,7 +39,7 @@ export class Metronom {
 
   playClickSound() {
     const time = this.audioContext.currentTime;
-    this.playClickSoundAtTime(time+0.01);
+    this.playClickSoundAtTime(time);
   }
 
   playClickSoundAtTime(time) {
@@ -88,7 +88,6 @@ export class Metronom {
     clearInterval(this.interval)
     this.status = Metronom.Status.Started;
     this.initAudio();
-
     this.createSoundRandomInterval();
   }
 

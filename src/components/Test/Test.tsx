@@ -48,7 +48,7 @@ const Test = (props: TestProps) => {
     metronom.start();
 
     return () => metronom.stop();
-  });
+  }, []);
 
   return (
     <>

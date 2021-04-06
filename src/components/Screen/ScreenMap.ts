@@ -17,6 +17,7 @@ import Finish from "./screens/Finish/Finish";
 import DebugTables from "./screens/DebugTables/DebugTables";
 import TestTrainingFinish from "./screens/TestTrainingFinish/TestTrainingFinish";
 import TestEnableHeadphone from "./screens/TestEnableHeadphone/TestEnableHeadphone";
+import CheckMetronom from "./screens/CheckMetronom/CheckMetronom";
 
 type ScreenMapElement = {
   ScreenComponent: React.JSXElementConstructor<any>;
@@ -108,6 +109,10 @@ export const ScreenMap: {
     [ScreenTypes.DebugTables]: {
       ScreenComponent: DebugTables,
       title: "Debug Tables"
+    },
+    [ScreenTypes.CheckMetronom]: {
+      ScreenComponent: CheckMetronom,
+      title: "Check Metronom"
     }
   },
 
