@@ -22,7 +22,7 @@ const TestTrainingTableInstruction = () => {
         эксперимента.</p>
       <Navigation>
         <div />
-        <GoButton to={ScreenTypes.TestTraining}>Начать тренировку</GoButton>
+        <GoButton to={ScreenTypes.TestStage1}>Начать эксперимент</GoButton>
       </Navigation>
     </>
   );

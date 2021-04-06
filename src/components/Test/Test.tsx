@@ -1,5 +1,5 @@
 import {defaultProps, TaskNames, TestProps} from "./Test.model";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import TestEstimate from "./TestEstimate/TestEstimate";
 import TestCreate from "./TestCreate/TestCreate";
 import Navigation from "../UI/Navigation/Navigation";
@@ -8,6 +8,7 @@ import {useDispatch} from "react-redux";
 import {setScreenByType} from "../../store/screen/screen.actions";
 import {StageResult, TaskTypes, TestResult} from "../../models/Test.model";
 import {setTest} from "../../store/user/user.actions";
+import useMetronom from "../../models/Metronom.hook";
 
 const Test = (props: TestProps) => {
   const [results, setResults] = useState<Partial<StageResult>>({});
@@ -15,6 +16,7 @@ const Test = (props: TestProps) => {
   const [currentTaskType, setCurrentTaskType] = useState<TaskTypes>(TaskTypes.Estimate);
   const [isTaskCompleted, setIsTaskCompleted] = useState(false);
   const dispatch = useDispatch();
+  const metronom = useMetronom(props.metronom);
   const isTasksEnded = currentIntervalIndex === (props.intervals.length - 1) && currentTaskType === TaskTypes.Create;
   const currentInterval = props.intervals[currentIntervalIndex];
 
@@ -37,29 +39,35 @@ const Test = (props: TestProps) => {
       setCurrentTaskType(prevState => prevState === TaskTypes.Estimate ? TaskTypes.Create : TaskTypes.Estimate);
       setIsTaskCompleted(false);
     } else {
-      dispatch(setTest(props.stage, results))
+      dispatch(setTest(props.stage, results));
       dispatch(setScreenByType(props.nextScreen));
     }
   };
 
+  useEffect(() => {
+    metronom.start();
+
+    return () => metronom.stop();
+  });
+
   return (
     <>
       <div>
-        <h2>{TaskNames[currentTaskType]} №{currentIntervalIndex + 1}</h2>
+        <h2>{TaskNames[currentTaskType]}</h2>
         {currentTaskType === TaskTypes.Estimate
           ?
           <TestEstimate
             key={`estimate_test_${currentIntervalIndex}`}
             interval={currentInterval}
-            metronom={props.metronom}
             onComplete={taskCompleteHandler.bind(null, TaskTypes.Estimate)}
+            hideTables={props.hideTables}
           />
           :
           <TestCreate
             key={`create_test_${currentIntervalIndex}`}
             interval={currentInterval}
-            metronom={props.metronom}
             onComplete={taskCompleteHandler.bind(null, TaskTypes.Create)}
+            hideTables={props.hideTables}
           />
         }
       </div>
@@ -72,7 +80,7 @@ const Test = (props: TestProps) => {
           {!isTasksEnded
             ? "Продолжить"
             : props.isTraining
-              ? "Закончить тренировку и начать тест"
+              ? "Закончить тренировку"
               : `Закончить этап №${props.stage}`}
         </Button>
       </Navigation>

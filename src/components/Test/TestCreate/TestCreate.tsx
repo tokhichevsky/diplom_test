@@ -5,7 +5,6 @@ import {setTableIndexes} from "../../../store/user/user.actions";
 import {selectTableIndexes} from "../../../store/user/user.selectors";
 import CreateIntervalTask from "../CreateIntervalTask/CreateIntervalTask";
 import {useState} from "react";
-import useMetronom from "../../../models/Metronom.hook";
 import tables from "../../../models/tables";
 
 const TestCreate = (props: TestCreateProps) => {
@@ -13,7 +12,6 @@ const TestCreate = (props: TestCreateProps) => {
   const [isEnded, setIsEnded] = useState(false);
   const [tablesScore, setTablesScore] = useState({correct: 0, wrong: 0})
   const dispatch = useDispatch();
-  const metronom = useMetronom(props.metronom);
   const {tableIndex: currentTableIndex, taskIndex: currentTaskIndex} = useSelector(selectTableIndexes);
 
   const cellClickHandler = (isValid, tableIndex, taskIndex) => {
@@ -26,7 +24,6 @@ const TestCreate = (props: TestCreateProps) => {
   };
 
   const completeTaskHandler = (time) => {
-    metronom.stop();
     const data = {
       tablesScore,
       time
@@ -37,13 +34,12 @@ const TestCreate = (props: TestCreateProps) => {
 
   const startTaskHandler = () => {
     setIsStarted(true);
-    metronom.start()
   };
 
   return (
     <div>
       <CreateIntervalTask time={props.interval} onStart={startTaskHandler} onComplete={completeTaskHandler}/>
-      {isStarted &&
+      {isStarted && !props.hideTables &&
       <CheckTable
         data={tables}
         onCellClick={cellClickHandler}

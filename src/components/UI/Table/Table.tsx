@@ -11,27 +11,33 @@ const Table = (props: TableProps) => {
     );
   }, [props]);
   return (
-    <table className={classnames(CSS.Table, {[CSS.Table_hoverable]: props.hoverable}, props.className)}>
-      <tr>
-        <th>{props.tableName}</th>
-        {props.columnNames.map((columnName, index) => <th key={`column_${index}`}>{columnName}</th>)}
-      </tr>
-      {props.rowNames.map((rowName, rowIndex) => (
-        <tr key={`row_${rowIndex}`}>
-          <td>{rowName}</td>
-          {props.columnNames.map((_, columnIndex) => (
-            <td
-              key={`cell_${rowIndex}_${columnIndex}`}
-              data-row-index={rowIndex}
-              data-column-index={columnIndex}
-              onClick={cellClickHandler}
-            >
-              {props.data && props.data[rowIndex][columnIndex]}
-            </td>
+    <div className={CSS.TableContainer}>
+      <div className={CSS.leftHelper}>выше<div className={CSS.verticalArrow}/>ниже<div className={CSS.space}/></div>
+      <div>
+        <table className={classnames(CSS.Table, {[CSS.Table_hoverable]: props.hoverable}, props.className)}>
+          <tr>
+            <th>{props.tableName}</th>
+            {props.columnNames.map((columnName, index) => <th key={`column_${index}`}>{columnName}</th>)}
+          </tr>
+          {props.rowNames.map((rowName, rowIndex) => (
+            <tr key={`row_${rowIndex}`}>
+              <td>{rowName}</td>
+              {props.columnNames.map((_, columnIndex) => (
+                <td
+                  key={`cell_${rowIndex}_${columnIndex}`}
+                  data-row-index={rowIndex}
+                  data-column-index={columnIndex}
+                  onClick={cellClickHandler}
+                >
+                  {props.data && props.data[rowIndex][columnIndex]}
+                </td>
+              ))}
+            </tr>
           ))}
-        </tr>
-      ))}
-    </table>
+        </table>
+        <div className={CSS.bottomHelper}>лево<div className={CSS.horizontalArrow} />право</div>
+      </div>
+    </div>
   );
 };
 

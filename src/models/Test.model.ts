@@ -28,6 +28,6 @@ export interface TablesScore {
   wrong: number
 }
 
-export const intervals = [26, 38, 64, 101, 156, 179];
+export const intervals = [101, 179, 38, 156, 26, 64];
 // export const intervals = [1,1];
 

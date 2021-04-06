@@ -8,6 +8,7 @@ export interface TestProps {
   metronom?: MetronomTypes
   nextScreen: ScreenTypes
   isTraining?: boolean,
+  hideTables?: boolean,
 }
 
 export const defaultProps: Partial<TestProps> = {

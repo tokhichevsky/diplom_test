@@ -15,6 +15,8 @@ import TestTrainingTableInstruction from "./screens/TestTrainingTableInstruction
 import Tests from "./screens/Tests/Tests";
 import Finish from "./screens/Finish/Finish";
 import DebugTables from "./screens/DebugTables/DebugTables";
+import TestTrainingFinish from "./screens/TestTrainingFinish/TestTrainingFinish";
+import TestEnableHeadphone from "./screens/TestEnableHeadphone/TestEnableHeadphone";
 
 type ScreenMapElement = {
   ScreenComponent: React.JSXElementConstructor<any>;
@@ -71,9 +73,13 @@ export const ScreenMap: {
       ScreenComponent: TestTrainingInfo,
       title: "Потренируемся?"
     },
+    [ScreenTypes.TestTrainingFinish]: {
+      ScreenComponent: TestTrainingFinish,
+      title: "Тренировка"
+    },
     [ScreenTypes.TestTrainingTableInstruction]: {
       ScreenComponent: TestTrainingTableInstruction,
-      title: "Потренируемся?"
+      title: "О таблицах"
     },
     [ScreenTypes.TestTraining]: {
       ScreenComponent: Tests.Training,
@@ -82,6 +88,10 @@ export const ScreenMap: {
     [ScreenTypes.TestStage1]: {
       ScreenComponent: Tests.Stage1,
       title: "Этап 1"
+    },
+    [ScreenTypes.TestEnableHeadphone]: {
+      ScreenComponent: TestEnableHeadphone,
+      title: "Наденьте наушники"
     },
     [ScreenTypes.TestStage2]: {
       ScreenComponent: Tests.Stage2,

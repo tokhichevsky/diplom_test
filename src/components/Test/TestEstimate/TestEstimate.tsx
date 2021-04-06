@@ -5,7 +5,6 @@ import {setTableIndexes} from "../../../store/user/user.actions";
 import EstimateIntervalTask from "../EstimateIntervalTask/EstimateIntervalTask";
 import {TestEstimateProps} from "./TestEstimate.model";
 import {selectTableIndexes} from "../../../store/user/user.selectors";
-import useMetronom from "../../../models/Metronom.hook";
 import tables from "../../../models/tables";
 
 const TestEstimate = (props: TestEstimateProps) => {
@@ -13,7 +12,6 @@ const TestEstimate = (props: TestEstimateProps) => {
   const [isEnded, setIsEnded] = useState(false);
   const [tablesScore, setTablesScore] = useState({correct: 0, wrong: 0})
   const dispatch = useDispatch();
-  const metronom = useMetronom(props.metronom);
   const currentTableIndex = useSelector(selectTableIndexes).tableIndex;
 
   const cellClickHandler = (isValid, tableIndex, taskIndex) => {
@@ -26,7 +24,6 @@ const TestEstimate = (props: TestEstimateProps) => {
   };
   const taskStartHandler = () => {
     setIsStarted(true);
-    metronom.start()
   }
 
   const taskCompleteHandler = (time) => {
@@ -37,7 +34,6 @@ const TestEstimate = (props: TestEstimateProps) => {
 
   const listeningEndHandler = () => {
     setIsEnded(true)
-    metronom.stop()
   }
 
   return (
@@ -48,7 +44,7 @@ const TestEstimate = (props: TestEstimateProps) => {
         onComplete={taskCompleteHandler}
         onListeningEnd={listeningEndHandler}
       />
-      {isStarted &&
+      {isStarted && !props.hideTables &&
       <CheckTable data={tables} onCellClick={cellClickHandler} startTableIndex={currentTableIndex} disabled={isEnded}/>
       }
     </div>

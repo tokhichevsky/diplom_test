@@ -48,7 +48,7 @@ export class Metronom {
     this.tickVolume.gain.setValueAtTime(0, time);
 
     // Audible click sound.
-    this.tickVolume.gain.linearRampToValueAtTime(0.2, time + .001);
+    this.tickVolume.gain.linearRampToValueAtTime(0.9, time + .001);
     this.tickVolume.gain.linearRampToValueAtTime(0, time + .001 + .01);
   }
 
@@ -72,7 +72,7 @@ export class Metronom {
       setTimeout(() => {
         this.playClickSound()
         this.createSoundRandomInterval();
-      }, 60 / ((0.15 + Math.random())/1.15 * 150) * 1000)
+      }, 60 / ((0.05 + Math.random())/1.05 * 250) * 1000)
     }
   }
 

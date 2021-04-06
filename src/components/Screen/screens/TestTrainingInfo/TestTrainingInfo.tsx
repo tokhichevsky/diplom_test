@@ -16,7 +16,7 @@ const TestTrainingInfo = () => {
       </CenterText>
       <Navigation>
         <div />
-        <GoButton to={ScreenTypes.TestTrainingTableInstruction}>Попробовать</GoButton>
+        <GoButton to={ScreenTypes.TestTraining}>Попробовать</GoButton>
       </Navigation>
     </>
   );
