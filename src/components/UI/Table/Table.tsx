@@ -35,7 +35,7 @@ const Table = (props: TableProps) => {
             </tr>
           ))}
         </table>
-        <div className={CSS.bottomHelper}>лево<div className={CSS.horizontalArrow} />право</div>
+        <div className={CSS.bottomHelper}>левее<div className={CSS.horizontalArrow} />правее</div>
       </div>
     </div>
   );
