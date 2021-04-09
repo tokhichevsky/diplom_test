@@ -24,7 +24,7 @@ export class Metronom {
   }
 
   private initAudio() {
-    this.audioContext = new AudioContext();
+    this.audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
     this.tick = this.audioContext.createOscillator();
     this.tickVolume = this.audioContext.createGain();
 
@@ -48,8 +48,8 @@ export class Metronom {
     this.tickVolume.gain.setValueAtTime(0, time);
 
     // Audible click sound.
-    this.tickVolume.gain.linearRampToValueAtTime(0.9, time + .001);
-    this.tickVolume.gain.linearRampToValueAtTime(0, time + .001 + .01);
+    this.tickVolume.gain.linearRampToValueAtTime(1, time + 0.001);
+    this.tickVolume.gain.linearRampToValueAtTime(0, time + 0.001 + 0.01);
   }
 
   private createSoundInterval() {
@@ -59,9 +59,10 @@ export class Metronom {
       this.playClickSound();
       setTimeout(() => {
         this.playClickSound();
+        this.playClickSoundAtTime(currentTime + this.intervalTime * 2)
         this.interval = setInterval(() => {
           currentTicksNum += 1;
-          this.playClickSoundAtTime(currentTime + currentTicksNum * this.intervalTime)
+          this.playClickSoundAtTime(currentTime + (currentTicksNum + 1) * this.intervalTime)
         }, this.intervalTime * 1000)
       }, this.intervalTime * 1000);
     }
