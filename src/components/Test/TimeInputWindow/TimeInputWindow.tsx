@@ -1,9 +1,10 @@
 import Input from "../../UI/Input/Input";
 import CSS from "./TimeInputWindow.module.scss";
-import {secondsToTimeString, TimeInputWindowProps} from "./TimeInputWindow.model";
+import {TimeInputWindowProps} from "./TimeInputWindow.model";
 import classnames from "classnames";
 import Button from "../../UI/Button/Button";
 import {ChangeEvent, useState} from "react";
+import {secondsToTimeString} from "../../../utils";
 
 const TimeInputWindow = (props: TimeInputWindowProps) => {
   const [time, setTime] = useState("");

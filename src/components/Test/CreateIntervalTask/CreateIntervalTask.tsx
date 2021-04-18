@@ -3,6 +3,7 @@ import CSS from "./CreateIntervalTask.module.scss";
 import Instruction from "../Instruction/Instruction";
 import CreateIntervalButton from "../CreateIntervalButton/CreateIntervalButton";
 import {useRef} from "react";
+import {secondsToTimeString} from "../../../utils";
 
 const CreateIntervalTask = (props: CreateIntervalTaskProps) => {
   const isStartedRef = useRef(false);
@@ -20,7 +21,7 @@ const CreateIntervalTask = (props: CreateIntervalTaskProps) => {
   return (
     <div className={CSS.CreateIntervalTask}>
       <Instruction className={CSS.CreateIntervalTask__instruction}>
-        Создайте интервал в <b>{props.time.toString()}</b> сек.
+        Создайте интервал в <b>{props.time.toString()}</b> сек. {props.time >= 60 && ` / (${secondsToTimeString(props.time)})`}
       </Instruction>
       <CreateIntervalButton
         className={CSS.CreateIntervalTask__intervalButton}
