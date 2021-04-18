@@ -11,7 +11,7 @@ export class Metronom {
     Stopped: "stopped",
     Initialized: "initialized",
     NotCreated: "not_created"
-  }
+  };
   private interval = null;
   public status: string = Metronom.Status.NotCreated;
 
@@ -19,7 +19,7 @@ export class Metronom {
     if (beatsPerMinute !== undefined) {
       this.intervalTime = 60 / beatsPerMinute;
     }
-    this.status = Metronom.Status.Initialized
+    this.status = Metronom.Status.Initialized;
     this.initAudio();
   }
 
@@ -28,7 +28,7 @@ export class Metronom {
     this.tick = this.audioContext.createOscillator();
     this.tickVolume = this.audioContext.createGain();
 
-    this.tick.type = 'sine';
+    this.tick.type = "sine";
     this.tick.frequency.value = this.soundHz;
     this.tickVolume.gain.value = 0;
 
@@ -57,13 +57,10 @@ export class Metronom {
       const currentTime = this.audioContext.currentTime;
       let currentTicksNum = 1;
       this.playClickSound();
-      setTimeout(() => {
-        this.playClickSound();
-        this.playClickSoundAtTime(currentTime + this.intervalTime * 2)
-        this.interval = setInterval(() => {
-          currentTicksNum += 1;
-          this.playClickSoundAtTime(currentTime + (currentTicksNum + 1) * this.intervalTime)
-        }, this.intervalTime * 1000)
+      this.playClickSoundAtTime(currentTime + this.intervalTime);
+      this.interval = setInterval(() => {
+        currentTicksNum += 1;
+        this.playClickSoundAtTime(currentTime + (currentTicksNum) * this.intervalTime);
       }, this.intervalTime * 1000);
     }
   }
@@ -71,9 +68,9 @@ export class Metronom {
   private createSoundRandomInterval() {
     if (this.status === Metronom.Status.Started) {
       setTimeout(() => {
-        this.playClickSound()
+        this.playClickSound();
         this.createSoundRandomInterval();
-      }, 60 / ((0.05 + Math.random())/1.05 * 250) * 1000)
+      }, 60 / ((0.05 + Math.random()) / 1.05 * 250) * 1000);
     }
   }
 
@@ -86,7 +83,7 @@ export class Metronom {
   }
 
   startRandom() {
-    clearInterval(this.interval)
+    clearInterval(this.interval);
     this.status = Metronom.Status.Started;
     this.initAudio();
     this.createSoundRandomInterval();
@@ -95,7 +92,7 @@ export class Metronom {
   stop() {
     this.status = Metronom.Status.Stopped;
     this.tickVolume.gain.value = 0;
-    clearInterval(this.interval)
+    clearInterval(this.interval);
   }
 }
 
