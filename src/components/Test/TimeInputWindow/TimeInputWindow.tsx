@@ -1,6 +1,6 @@
 import Input from "../../UI/Input/Input";
 import CSS from "./TimeInputWindow.module.scss";
-import {TimeInputWindowProps} from "./TimeInputWindow.model";
+import {secondsToTimeString, TimeInputWindowProps} from "./TimeInputWindow.model";
 import classnames from "classnames";
 import Button from "../../UI/Button/Button";
 import {ChangeEvent, useState} from "react";
@@ -34,7 +34,8 @@ const TimeInputWindow = (props: TimeInputWindowProps) => {
           onChange={inputChangeHandler}
           min="0"
         />
-        секунд
+        секунд{" / "}
+        <b>({secondsToTimeString(Number(time))})</b>
       </div>
       <Button disabled={!time} onClick={saveButtonClickHandler}>Ответить</Button>
     </div>
