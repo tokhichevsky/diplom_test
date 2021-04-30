@@ -4,8 +4,8 @@ import {useSelector} from "react-redux";
 import {selectIsEvenUser} from "../store/user/user.selectors";
 
 const useMetronom = (type?: MetronomTypes) => {
-  const isEvenUser = useSelector(selectIsEvenUser)
-  const metronom = useMemo(() => new Metronom(isEvenUser ? 140 : 35), [isEvenUser]);
+  // const isEvenUser = useSelector(selectIsEvenUser)
+  const metronom = useMemo(() => new Metronom(35), []);
   const metronomManager = useMemo(() => {
     const defaultManager = {
       stop: () => metronom.stop(),
