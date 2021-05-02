@@ -1,12 +1,16 @@
 import {ScreenTypes} from "models/Screen.model";
+import {debugPage, externalId} from "settings";
 import {ScreenAction, ScreenState} from "./screen.store";
-import {ScreenMap} from "../../components/Screen/ScreenMap";
+import {ScreenMap} from "components/Screen/ScreenMap";
 
-const debugPage = new URLSearchParams(window.location.search).get("debug")
 
 export const initialState: ScreenState = {
   screen: [
-    ScreenMap.get((debugPage && ScreenTypes[debugPage]) || ScreenTypes.Start)
+    ScreenMap.get(
+      (debugPage && ScreenTypes[debugPage])
+      || (externalId && ScreenTypes.ChooseFix)
+      || ScreenTypes.Start
+    )
   ],
 };
 

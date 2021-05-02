@@ -1,4 +1,4 @@
-import {ScreenElement} from "../../models/Screen.model";
+import {ScreenElement} from "models/Screen.model";
 
 export const SCREEN_STORE_KEY = "screen"
 

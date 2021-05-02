@@ -1,4 +1,5 @@
-import {ScreenElement, ScreenTypes} from "../../models/Screen.model";
+import ChooseFix from "components/Screen/screens/ChooseFix/ChooseFix";
+import {ScreenElement, ScreenTypes} from "models/Screen.model";
 import Start from "./screens/Start/Start";
 import Warning from "./screens/Warning/Warning";
 import Poll from "./screens/Poll/Poll";
@@ -113,6 +114,10 @@ export const ScreenMap: {
     [ScreenTypes.CheckMetronom]: {
       ScreenComponent: CheckMetronom,
       title: "Check Metronom"
+    },
+    [ScreenTypes.ChooseFix]: {
+      ScreenComponent: ChooseFix,
+      title: "Исправление"
     }
   },
 

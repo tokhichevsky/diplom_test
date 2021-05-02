@@ -1,4 +1,4 @@
-import {StageResult} from "../../models/Test.model";
+import {StageResult} from "models/Test.model";
 
 export const USER_STORE_KEY = "user"
 

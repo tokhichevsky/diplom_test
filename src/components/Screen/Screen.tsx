@@ -1,6 +1,6 @@
 import React from "react";
 import {useSelector} from "react-redux";
-import {selectCurrentScreen} from "../../store/screen/screen.selectors";
+import {selectCurrentScreen} from "store/screen/screen.selectors";
 import {ScreenMap} from "./ScreenMap";
 import CSS from "./Screen.module.scss";
 

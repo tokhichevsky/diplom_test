@@ -1,14 +1,17 @@
-import {defaultProps, TaskNames, TestProps} from "./Test.model";
+import {patchExperimentRequest} from "api";
+import {ScreenTypes} from "models/Screen.model";
 import {useEffect, useState} from "react";
-import TestEstimate from "./TestEstimate/TestEstimate";
-import TestCreate from "./TestCreate/TestCreate";
-import Navigation from "../UI/Navigation/Navigation";
-import Button from "../UI/Button/Button";
 import {useDispatch} from "react-redux";
-import {setScreenByType} from "../../store/screen/screen.actions";
-import {StageResult, TaskTypes, TestResult} from "../../models/Test.model";
-import {setTest} from "../../store/user/user.actions";
-import useMetronom from "../../models/Metronom.hook";
+import {externalId} from "settings";
+import useMetronom from "models/Metronom.hook";
+import {StageResult, TaskTypes, TestResult} from "models/Test.model";
+import {setScreenByType} from "store/screen/screen.actions";
+import {setTest} from "store/user/user.actions";
+import Button from "../UI/Button/Button";
+import Navigation from "../UI/Navigation/Navigation";
+import {defaultProps, TaskNames, TestProps} from "./Test.model";
+import TestCreate from "./TestCreate/TestCreate";
+import TestEstimate from "./TestEstimate/TestEstimate";
 
 const Test = (props: TestProps) => {
   const [results, setResults] = useState<Partial<StageResult>>({});
@@ -31,7 +34,7 @@ const Test = (props: TestProps) => {
     setIsTaskCompleted(true);
   };
 
-  const nextTaskButtonClickHandler = () => {
+  const nextTaskButtonClickHandler = async () => {
     if (!isTasksEnded) {
       if (currentTaskType === TaskTypes.Create) {
         setCurrentIntervalIndex(prevState => prevState + 1);
@@ -39,8 +42,17 @@ const Test = (props: TestProps) => {
       setCurrentTaskType(prevState => prevState === TaskTypes.Estimate ? TaskTypes.Create : TaskTypes.Estimate);
       setIsTaskCompleted(false);
     } else {
-      dispatch(setTest(props.stage, results));
-      dispatch(setScreenByType(props.nextScreen));
+      try {
+        const dispatchedTestUpdate = dispatch(setTest(props.stage, results));
+        if (externalId) {
+          await patchExperimentRequest({id: externalId, test: dispatchedTestUpdate.payload});
+          dispatch(setScreenByType(ScreenTypes.ChooseFix))
+        } else {
+          dispatch(setScreenByType(props.nextScreen));
+        }
+      } catch (error) {
+        throw error;
+      }
     }
   };
 
